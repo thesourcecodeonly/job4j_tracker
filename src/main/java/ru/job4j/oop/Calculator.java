@@ -21,10 +21,6 @@ public class Calculator {
     }
 
     public int sumAllOperation(int c) {
-        System.out.println(sum(c));
-        System.out.println(minus(c));
-        System.out.println(multiply(c));
-        System.out.println(divide(c));
         return sum(c) + minus(c) + multiply(c) + divide(c);
     }
 
