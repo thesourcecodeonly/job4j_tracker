@@ -44,9 +44,4 @@ public class Item {
     public void setName(String name) {
         this.name = name;
     }
-
-    public static void main(String[] args) {
-        Item item2 = new Item("Viktor");
-        Item item3 = new Item(33, "Vika");
-    }
 }
