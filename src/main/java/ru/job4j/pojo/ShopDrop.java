@@ -27,13 +27,9 @@ public class ShopDrop {
         }
         System.out.println("==========================");
         delete(products, 2);
-        for (int i = 0; i < products.length; i++) {
-            Product product = products[i];
-            if (products[i] == null) {
-                System.out.println(products[i]);
-            } else {
-                System.out.println(product.getName());
-            }
+        for (int i = 0; i < products.length - 1; i++) {
+            products[i] = products[i + 1];
         }
+        products[products.length - 1] = null;
     }
 }
