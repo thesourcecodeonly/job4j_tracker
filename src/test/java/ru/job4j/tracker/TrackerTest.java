@@ -15,17 +15,6 @@ public class TrackerTest {
     }
 
     @Test
-    public void whenTestFindAll() {
-        Tracker tracker = new Tracker();
-        Item first = new Item("First");
-        Item second = new Item("Second");
-        tracker.add(first);
-        tracker.add(second);
-        Item result = tracker.findAll()[0];
-        assertThat(result.getName()).isEqualTo(first.getName());
-    }
-
-    @Test
     public void whenTestFindByNameCheckArrayLength() {
         Tracker tracker = new Tracker();
         Item first = new Item("First");
@@ -37,6 +26,17 @@ public class TrackerTest {
         tracker.add(new Item("First"));
         Item[] result = tracker.findByName(first.getName());
         assertThat(result.length).isEqualTo(3);
+    }
+
+    @Test
+    public void whenTestFindAll() {
+        Tracker tracker = new Tracker();
+        Item first = new Item("First");
+        Item second = new Item("Second");
+        tracker.add(first);
+        tracker.add(second);
+        Item result = tracker.findAll()[0];
+        assertThat(result.getName()).isEqualTo(first.getName());
     }
 
     @Test
