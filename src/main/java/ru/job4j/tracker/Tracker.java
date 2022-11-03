@@ -52,16 +52,6 @@ public class Tracker {
         return Arrays.copyOf(items, size);
     }
 
-    public boolean replace(int id, Item item) {
-        int index = indexOf(id);
-        boolean result = index != -1;
-        if (result) {
-            item.setId(id);
-            items[index] = item;
-        }
-        return  result;
-    }
-
     public boolean delete(int id) {
         int index = indexOf(id);
         boolean result = index != -1;
@@ -71,5 +61,15 @@ public class Tracker {
             size--;
         }
         return result;
+    }
+
+    public boolean replace(int id, Item item) {
+        int index = indexOf(id);
+        boolean result = index != -1;
+        if (result) {
+            item.setId(id);
+            items[index] = item;
+        }
+        return  result;
     }
 }
