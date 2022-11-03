@@ -37,7 +37,7 @@ public class Tracker {
     }
 
     public Item[] findByName(String key) {
-        Item[] rsl = Arrays.copyOf(items, size);
+        Item[] rsl = new Item[size];
         int k = 0;
         for (int index = 0; index < size; index++) {
             Item item = rsl[index];
@@ -49,8 +49,7 @@ public class Tracker {
     }
 
     public Item[] findAll() {
-        Item[] rsl = Arrays.copyOf(items, size);
-        return rsl;
+        return Arrays.copyOf(items, size);
     }
 
     public boolean replace(int id, Item item) {
