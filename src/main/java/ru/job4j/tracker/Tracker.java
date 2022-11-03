@@ -7,6 +7,13 @@ public class Tracker {
     private int ids = 1;
     private int size = 0;
 
+    public Tracker() {
+    }
+
+    public Item[] getItems() {
+        return items;
+    }
+
     public Item add(Item item) {
         item.setId(ids++);
         items[size++] = item;
@@ -51,5 +58,16 @@ public class Tracker {
         Item currentItem = items[index];
         currentItem.setName(item.getName());
         return  currentItem.getName() == item.getName();
+    }
+
+    public boolean delete(int id) {
+        int index = indexOf(id);
+        int size = items.length;
+        Item item = items[index];
+        items[index] = null;
+        System.arraycopy(items, index + 1, items, index, size - index - 1);
+        items[size - 1] = null;
+        size--;
+        return item.getId() != id;
     }
 }
