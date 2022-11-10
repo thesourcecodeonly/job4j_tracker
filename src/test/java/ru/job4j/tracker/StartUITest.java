@@ -222,7 +222,7 @@ public class StartUITest {
         Item two = tracker.add(new Item("test2"));
         String searchId = "1";
         Input in = new StubInput(
-                new String[] {"0", searchId, "1"}
+                new String[] {"0", String.valueOf(one.getId()), "1"}
         );
         UserAction[] actions = new UserAction[] {
                 new FindItemByIdAction(out),
