@@ -7,22 +7,16 @@ public class UserStore {
             if (u.getUsername().equals(login)) {
                   return u;
             }
-            if (!u.getUsername().equals(login)) {
-                new UserNotFoundException("User njt found");
-            }
-
+            throw new UserNotFoundException("User not found");
         }
         return null;
     }
 
     public static boolean validate(User user) throws UserInvalidException {
-        if (user.isValid()) {
-            return true;
+        if (!user.isValid() || user.getUsername().length() < 4) {
+            throw new UserInvalidException("Invalid element.");
         }
-        if (!user.isValid()) {
-            new UserInvalidException("Invalid element.");
-        }
-        return false;
+        return true;
     }
 
     public static void main(String[] args) {
@@ -30,7 +24,7 @@ public class UserStore {
                 new User("Petr Arsentev", true),
                 new User("Ivan Ivanov", false)
         };
-        String login = "Petr Arsent";
+        String login = "Ivan Ivanov";
         try {
              findUser(users, login);
         } catch (UserInvalidException e) {
