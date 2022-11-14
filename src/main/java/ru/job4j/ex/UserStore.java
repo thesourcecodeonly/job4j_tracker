@@ -26,6 +26,8 @@ public class UserStore {
         String login = "Ivan Ivanov";
         try {
              findUser(users, login);
+             validate(users[0]);
+            validate(users[1]);
         } catch (UserInvalidException e) {
             e.printStackTrace();
         } catch (UserNotFoundException exception) {
