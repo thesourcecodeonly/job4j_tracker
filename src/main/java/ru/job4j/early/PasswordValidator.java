@@ -9,73 +9,72 @@ public class PasswordValidator {
         if (password.length() < 8 || password.length() > 32) {
             throw new IllegalArgumentException("Password should be length [8, 32]");
         }
-        if (indexOfLowerCase(password) == -1) {
+        if (!indexOfLowerCase(password)) {
             throw new IllegalArgumentException("Password should contain at least one lowercase letter");
         }
-        if (indexOfUpperCase(password) == -1) {
+        if (!indexOfUpperCase(password)) {
             throw new IllegalArgumentException("Password should contain at least one uppercase letter");
         }
-        if (indexOfDigit(password) == -1) {
+        if (!indexOfDigit(password)) {
             throw new IllegalArgumentException("Password should contain at least one figure");
         }
-        if (indexOfSpecialSymbol(password) == -1) {
+        if (!indexOfSpecialSymbol(password)) {
             throw new IllegalArgumentException("Password should contain at least one special symbol");
         }
-        if (password.toLowerCase().indexOf("qwerty") != -1
-                || password.toLowerCase().indexOf("admin") != -1
-                || password.toLowerCase().indexOf("user") != -1
-                || password.toLowerCase().indexOf("password") != -1
-                || password.indexOf("12345") != -1) {
-            throw new IllegalArgumentException("Password shouldn't contain substrings: qwerty, 12345, password, admin, user");
+        String[] arrInvalidStrings = {"qwerty", "admin", "user", "password", "12345"};
+        for (int index = 0; index < arrInvalidStrings.length; index++) {
+            if (password.toLowerCase().contains(arrInvalidStrings[index])) {
+                throw new IllegalArgumentException("Password shouldn't contain substrings: qwerty, 12345, password, admin, user");
+            }
         }
         return password;
     }
 
-    public static int indexOfLowerCase(String password) {
-        int rsl = -1;
+    public static boolean indexOfLowerCase(String password) {
+        boolean rsl = false;
         char[] arrChars = password.toCharArray();
         for (int index = 0; index < arrChars.length; index++) {
             char key = arrChars[index];
             if (Character.isLowerCase(key)) {
-                rsl = index;
+                rsl = true;
                 break;
             }
         }
         return rsl;
     }
 
-    public static int indexOfUpperCase(String password) {
-        int rsl = -1;
+    public static boolean indexOfUpperCase(String password) {
+        boolean rsl = false;
         char[] arrChars = password.toCharArray();
         for (int index = 0; index < arrChars.length; index++) {
             char key = arrChars[index];
             if (Character.isUpperCase(key)) {
-                rsl = index;
+                rsl = true;
                 break;
             }
         }
         return rsl;
     }
 
-    public static int indexOfDigit(String password) {
-        int rsl = -1;
+    public static boolean indexOfDigit(String password) {
+        boolean rsl = false;
         char[] arrChars = password.toCharArray();
         for (int index = 0; index < arrChars.length; index++) {
             char key = arrChars[index];
             if (Character.isDigit(key)) {
-                rsl = index;
+                rsl = true;
                 break;
             }
         }
         return rsl;
     }
 
-    public static int indexOfSpecialSymbol(String password) {
-        int rsl = -1;
+    public static boolean indexOfSpecialSymbol(String password) {
+        boolean rsl = false;
         for (int index = 0; index < password.length(); index++) {
             int code  = password.codePointAt(index);
             if (code == 36 || code == 95) {
-                rsl = index;
+                rsl = true;
                 break;
             }
         }
@@ -83,7 +82,7 @@ public class PasswordValidator {
     }
 
     public static void main(String[] args) {
-        String password = "TYU_w123qwerty";
+        String password = "TYU1_wqwerty";
         System.out.println(validate(password));
     }
 }
