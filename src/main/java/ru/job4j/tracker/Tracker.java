@@ -34,12 +34,9 @@ public class Tracker {
 
     public List<Item> findByName(String key) {
         ArrayList<Item> rsl = new ArrayList<>();
-        int count = 0;
-        for (int index = 0; index < items.size(); index++) {
-            Item item = items.get(index);
+        for (Item item : items) {
             if (item.getName().equals(key)) {
                 rsl.add(item);
-                count++;
             }
         }
         return rsl;
