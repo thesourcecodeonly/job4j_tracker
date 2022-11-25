@@ -17,21 +17,13 @@ public class BankService {
     }
 
     public boolean deleteUser(String passport) {
-        boolean rsl = false;
-        for (User user : users.keySet()) {
-            if (user.getPassport().equals(passport)) {
-                users.remove(user, users.get(user));
-                rsl = true;
-                break;
-            }
-        }
-        return rsl;
+        return users.remove(new User(passport, "")) != null;
     }
 
     public void addAccount(String passport, Account account) {
         User user = findByPassport(passport);
         for (List<Account> accounts : users.values()) {
-            if (!accounts.contains(account)) {
+            if (!accounts.contains(account) && user != null) {
                 accounts.add(account);
             }
         }
@@ -75,18 +67,5 @@ public class BankService {
 
     public List<Account> getAccounts(User user) {
         return users.get(user);
-    }
-
-    public static void main(String[] args) {
-        User user1 = new User("3434", "Petr Arsentev");
-        BankService bank = new BankService();
-        bank.addUser(user1);
-        System.out.println(bank.users);
-        System.out.println("======================================");
-        User user2 = new User("3433", "Petya Arsentsev");
-        bank.addUser(user2);
-        System.out.println(bank.users);
-        System.out.println("======================================");
-        System.out.println(bank.findByPassport("3433"));
     }
 }
