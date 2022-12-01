@@ -25,9 +25,7 @@ public class AttachmentSort {
         Comparator<Attachment> cmpName = new Comparator<Attachment>() {
             @Override
             public int compare(Attachment left, Attachment right) {
-                int result = left.getName().compareTo(right.getName());
-                return result == 0 ? Integer.compare(
-                        left.getName().length(), right.getName().length()) : result;
+                return left.getName().compareTo(right.getName());
             }
         };
         attachments.sort(cmpName);
