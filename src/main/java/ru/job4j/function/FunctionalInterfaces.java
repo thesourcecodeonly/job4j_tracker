@@ -26,13 +26,7 @@ public class FunctionalInterfaces {
             }
         }
 
-        Supplier<List<String>> sup = () -> {
-            ArrayList<String> list = new ArrayList<>(map.values());
-            for (String s : map.values()) {
-                list.add(s);
-            }
-            return list;
-        };
+        Supplier<List<String>> sup = () -> new ArrayList<>(map.values());
         List<String> strings = new ArrayList<>(sup.get());
 
         Consumer<String> con = s -> System.out.println(s);
