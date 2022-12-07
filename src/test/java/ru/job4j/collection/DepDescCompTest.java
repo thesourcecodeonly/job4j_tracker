@@ -47,7 +47,7 @@ public class DepDescCompTest {
 
     @Test
     public void whenSortAscWithoutMissedDepartments() {
-        List<String> input = List.of(
+        List<String> input = Arrays.asList(
                 "K1/SK1",
                 "K1/SK1/SSK1",
                 "K1/SK1/SSK2",
@@ -58,7 +58,7 @@ public class DepDescCompTest {
                 "K2/SK1/SSK2",
                 "K2/SK1/SSK1"
         );
-        List<String> expect = List.of(
+        List<String> expect = Arrays.asList(
                 "K1",
                 "K1/SK1",
                 "K1/SK1/SSK1",
@@ -75,7 +75,7 @@ public class DepDescCompTest {
 
     @Test
     public void whenSortAscWithMissedDepartments() {
-        List<String> input = List.of(
+        List<String> input = Arrays.asList(
                 "K1/SK1/SSK1",
                 "K1/SK1/SSK2",
                 "K2/SK1",
@@ -83,7 +83,7 @@ public class DepDescCompTest {
                 "K2/SK1/SSK2",
                 "K2/SK1/SSK1"
         );
-        List<String> expect = List.of(
+        List<String> expect = Arrays.asList(
                 "K1/SK1/SSK1",
                 "K1/SK1/SSK2",
                 "K1/SK2",
@@ -97,7 +97,7 @@ public class DepDescCompTest {
 
     @Test
     public void whenSortDescWithoutMissedDepartments() {
-        List<String> input = List.of(
+        List<String> input = Arrays.asList(
                 "K1/SK1",
                 "K1/SK1/SSK1",
                 "K1/SK1/SSK2",
@@ -108,7 +108,7 @@ public class DepDescCompTest {
                 "K2/SK1/SSK2",
                 "K2/SK1/SSK1"
         );
-        List<String> expect = List.of(
+        List<String> expect = Arrays.asList(
                 "K2",
                 "K2/SK1",
                 "K2/SK1/SSK1",
@@ -125,7 +125,7 @@ public class DepDescCompTest {
 
     @Test
     public void whenSortDescWithMissedDepartments() {
-        List<String> input = List.of(
+        List<String> input = Arrays.asList(
                 "K1/SK1",
                 "K1/SK1/SSK1",
                 "K1/SK1/SSK2",
@@ -134,7 +134,7 @@ public class DepDescCompTest {
                 "K2/SK1/SSK2",
                 "K2/SK1/SSK1"
         );
-        List<String> expect = List.of(
+        List<String> expect = Arrays.asList(
                 "K2/SK1",
                 "K2/SK1/SSK1",
                 "K2/SK1/SSK2",
